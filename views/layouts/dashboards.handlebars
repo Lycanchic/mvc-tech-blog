@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>MVC Tech Blog</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="flex-column max-100-vh">
+<nav class="navbar">
+   <ul class="flex-row">
+    <li class="li-inline nav-items"><a href="/">Home</a></li>
+    <li class="li-inline nav-items"><a href="/dashboard">My Dashboard</a></li>
+    <li class="li-inline nav-items"><a href="#" id="logout-link">Logout</a></li>
+   </ul> 
+</nav>
+   <main class="col-auto">
+    {{{body}}}
+   </main>
+
+   <footer class="footer flex-row justify-center">
+     <a href="/dashboard/new"> New Post </a>
+   </footer>
+</body>
+</html>
