@@ -1,5 +1,5 @@
 # MVC Tech Blog
-**MVC Tech Blog** is an application built using HTML, CSS, JS, MySQL, Handlebars.js, Sequelize, Json, typescript, insomnia, prettier, bootstrap, express and node.js, mongodb.
+**MVC Tech Blog** is an application built using HTML, CSS, JS, MySQL, Handlebars.js, Sequelize, Json, typescript, insomnia, prettier, bcrypt, dotenv, express and node.js, JAWSDB.
 
 
 ## Images of the deployed website:
@@ -75,10 +75,10 @@ THEN I am able to view comments but I am prompted to log in again before I can a
     Handlebars.js
     Seqealize
     Json 
-    typescript
+    JAWSDB
+    dotenv
     express 
     node.js
-    Bootstrap
     Bcrypt
     insomnia
     prettier
