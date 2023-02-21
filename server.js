@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const helpers = require('helpers');
+const routes = require('./controllers/api')
 
 const sequelize = require('./config/config');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -41,5 +42,10 @@ app.use(express.urlencoded({ extended: false }));
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // Set up the session middleware
 app.use(session(sessionOptions));
+sequelize.sync({force: true})
+ .then(function(){
+app.listen(PORT)
+ })

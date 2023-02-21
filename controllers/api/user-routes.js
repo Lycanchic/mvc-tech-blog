@@ -1,4 +1,4 @@
-const router = require("express").Router;
+const router = require("express").Router();
 const { User } = require("../../models");
 
 router.post("/", async (req, res) => {
@@ -47,29 +47,29 @@ router.post("/login", async (req, res) => {
   }
 });
 
-try {
+//try {
   // Check if user exists
-  const user = await User.findOne({ username: req.body.username });
-  if (!user) {
-    return res.status(404).json({ message: "User account not found" });
-  }
+  // const user = await User.findOne({ username: req.body.username });
+  // if (!user) {
+  //   return res.status(404).json({ message: "User account not found" });
+  // }
 
   // Check if password is correct
-  const passwordMatch = await bcrypt.compare(req.body.password, user.password);
-  if (!passwordMatch) {
-    return res.status(400).json({ message: "Invalid password" });
-  }
+//   const passwordMatch = await bcrypt.compare(req.body.password, user.password);
+//   if (!passwordMatch) {
+//     return res.status(400).json({ message: "Invalid password" });
+//   }
 
-  // Save session and return success message
-  req.session.save((err) => {
-    if (err) {
-      return res.status(500).json(err);
-    }
-    res.json({ user, message: "You have successfully logged in" });
-  });
-} catch (err) {
-  res.status(500).json(err);
-}
+//   // Save session and return success message
+//   req.session.save((err) => {
+//     if (err) {
+//       return res.status(500).json(err);
+//     }
+//     res.json({ user, message: "You have successfully logged in" });
+//   });
+// } catch (err) {
+//   res.status(500).json(err);
+// }
 
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
