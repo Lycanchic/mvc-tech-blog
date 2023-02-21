@@ -4,10 +4,11 @@ const withAuth = (req, res, next) => {
   if (!req.session.userId) {
     // Redirect to the login page if the user is not authenticated
     res.redirect("/login");
-  }
+  } else {
 
   // Call the next middleware function in the stack
   next();
+  }
 };
 
-module.exports=withAuth;
+module.exports = withAuth;

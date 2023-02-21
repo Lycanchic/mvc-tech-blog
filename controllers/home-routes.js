@@ -1,38 +1,39 @@
-const router = require('express').Router();
-const { Post, Comment, User } = require('../models/');
+const router = require("express").Router();
+const { Post, Comment, User } = require("../models/");
 
-// For a single post
-router.get('/', async (req, res) => {
+// For a all posts
+router.get("/", async (req, res) => {
   try {
     //console.log("Hello World");
-    
+
     const postData = await Post.findAll({
       include: [User],
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render('all-posts', { posts });
+    res.render("all-posts", { posts });
   } catch (err) {
     res.status(500).json({ error: "Not able to retrieve posts" });
   }
 });
 
-router.get('/post/:id', async (req, res) => {
+// get single post
+router.get("/post/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
-        Users,
-        { 
-          model: Comment, 
+        User,
+        {
+          model: Comment,
           include: [User],
-      }, 
+        },
       ],
     });
     if (postData) {
-    const post = postData.get({ plain: true });
-    
-    res.render('single-post', { post });
+      const post = postData.get({ plain: true });
+
+      res.render("single-post", { post });
     } else {
       res.status(404).end();
     }
@@ -61,25 +62,23 @@ router.get('/post/:id', async (req, res) => {
 //   }
 // }
 
-
-
 // Routes
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
 
-  res.render('login');
+  res.render("login");
 });
 
-router.get('/signup', (req, res) => {
+router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
 
-  res.render('signup');
+  res.render("signup");
 });
 
 module.exports = router;

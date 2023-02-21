@@ -2,8 +2,8 @@ const User = require('./User');
 const Post = require('./Post');
 const Comment = require('./Comment');
 
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/config');
+//const { Model, DataTypes } = require('sequelize');
+//const sequelize = require('../config/config');
 
 // class User extends Model {}
 // User.init({
@@ -24,7 +24,26 @@ const sequelize = require('../config/config');
 //
 //Comment.belongsTo(User, { foreignKey: 'comment' });
 
-Post.belongsTo(User, { foreignKey: 'userId' });
-User.hasMany(Post, { foreignKey: 'userId', onDelete: 'CASCADE' })
+//Post.belongsTo(User, { foreignKey: 'userId' });
+//User.hasMany(Post, { foreignKey: 'userId', onDelete: 'CASCADE' })
 
-module.exports = { User, Post, Comment };
+Post.belongsTo(User, {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE'
+});
+
+Post.hasMany(Comment, {
+    foreignKey: 'postId',
+    onDelete: 'CASCADE'
+});
+
+Comment.belongsTo(User, {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE'
+});
+
+module.exports = { 
+    User, 
+    Post,
+    Comment
+ };
